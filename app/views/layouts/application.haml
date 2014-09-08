@@ -1,0 +1,21 @@
+!!!
+%html{ lang: 'en' }
+  %head
+    %meta{ charset: 'utf-8' }/
+    %meta{ content: 'IE=Edge,chrome=1', 'http-equiv' => 'X-UA-Compatible' }/
+    %meta{ content: 'width=device-width, initial-scale=1.0', name: 'viewport' }/
+    = csrf_meta_tags
+    = stylesheet_link_tag 'application', media: 'all'
+    = javascript_include_tag 'application'
+
+  %body
+    %nav.navbar.navbar-default
+      .container-fluid
+        .navbar-header
+          %span.navbar-brand Netguru Kraków Workshops 2014
+        %p.navbar-text.navbar-right
+          Links should go here
+    .container-fluid
+      .row
+        .col-lg-12
+          = yield
