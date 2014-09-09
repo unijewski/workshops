@@ -17,8 +17,7 @@
         %p.navbar-text.navbar-right
           - if user_signed_in?
             Logged in as
-            = succeed "." do
-              %strong= current_user.firstname + ' ' + current_user.lastname
+            %strong= link_to "#{current_user.firstname} #{current_user.lastname}", current_user
             |
             = link_to 'Edit your profile', edit_user_registration_path, :class => 'navbar-link'
             |
