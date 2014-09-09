@@ -1,6 +1,6 @@
 class CategoriesController < ApplicationController
-  before_action :authenticate_user!, only: [:new, :edit, :update, :destroy, :create]
-  before_action :admin_auth, only: [:new, :create, :edit, :update]
+  before_action :authenticate_user!, except: [:index, :show]
+  before_action :admin_auth, except: [:index, :show]
 
   expose(:categories)
   expose(:category)
@@ -47,6 +47,8 @@ class CategoriesController < ApplicationController
     end
 
     def admin_auth
-      redirect_to new_user_session_path unless current_user.admin?
+      unless current_user.try(:admin?)
+        redirect_to new_user_session_path, notice: "You must be logged in to access this section."
+      end
     end
 end

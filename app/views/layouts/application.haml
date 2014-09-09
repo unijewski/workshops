@@ -12,7 +12,8 @@
     %nav.navbar.navbar-default
       .container-fluid
         .navbar-header
-          %span.navbar-brand Netguru Kraków Workshops 2014
+          %span.navbar-brand
+            = link_to 'Netguru Kraków Workshops 2014', root_path
         %p.navbar-text.navbar-right
           - if user_signed_in?
             Logged in as

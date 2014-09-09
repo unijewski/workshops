@@ -1,12 +1,16 @@
 %p#notice= notice
 
 %p
+  = link_to '» Display all products for this category', products_path
+  %br
+  %br
+
   %b Name:
   = category.name
 
-%p
-  - category.products.each do |product|
-    = product.title
+  %ul
+    - category.products.each do |product|
+      %li= product.title
 
 %p
   %h3 New product
