@@ -6,4 +6,8 @@ module UsersHelper
     gravatar_url = "https://secure.gravatar.com/avatar/#{gravatar_id}"
     image_tag(gravatar_url, alt: user.firstname, class: "gravatar")
   end
+
+  def last_reviews(user)
+    Review.where(user_id: user.id).order(created_at: :desc).last(5)
+  end
 end

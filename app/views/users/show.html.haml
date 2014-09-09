@@ -1,6 +1,26 @@
 %h1
-  = gravatar_for @user
+  = gravatar_for(@user)
   = @user.firstname
   = @user.lastname
+  - if current_user.try(:admin?)
+    %h3 Admin
+  - else
+    %h3 User
 %h4
   = @user.email
+
+%br
+
+%h2 Last reviews
+
+%table.table
+  %tr
+    %th Date
+    %th Content
+    %th Rating
+
+  - last_reviews(@user).each do |review|
+    %tr
+      %td= review.created_at.strftime('%d-%m-%Y')
+      %td= review.content
+      %td= review.rating
