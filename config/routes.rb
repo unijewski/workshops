@@ -5,6 +5,7 @@ Rails.application.routes.draw do
     end
   end
 
-  root 'categories#index'
   devise_for :users
+  root 'categories#index'
+  get '/products' => 'products#index'
 end
