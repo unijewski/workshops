@@ -2,7 +2,6 @@ source 'https://rubygems.org'
 ruby '2.1.2'
 
 gem 'rails', '4.1.5'
-
 gem 'pg'
 gem 'draper'
 gem 'decent_exposure'
@@ -32,4 +31,9 @@ end
 
 group :test do
   gem 'database_cleaner'
+end
+
+group :production do
+  gem 'rails_12factor'
+  gem 'figaro'
 end
