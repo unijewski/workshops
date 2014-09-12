@@ -1,3 +1,4 @@
+# Categories handler
 class CategoriesController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
   before_action :admin_auth, except: [:index, :show]
@@ -42,13 +43,14 @@ class CategoriesController < ApplicationController
   end
 
   private
-    def category_params
-      params.require(:category).permit(:name)
-    end
 
-    def admin_auth
-      unless current_user.try(:admin?)
-        redirect_to new_user_session_path, notice: "You must be logged in to access this section."
-      end
+  def category_params
+    params.require(:category).permit(:name)
+  end
+
+  def admin_auth
+    unless current_user.try(:admin?)
+      redirect_to new_user_session_path, notice: 'You must be logged in to access this section.'
     end
+  end
 end

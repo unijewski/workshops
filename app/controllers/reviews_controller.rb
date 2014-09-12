@@ -1,5 +1,5 @@
+# Reviews handler
 class ReviewsController < ApplicationController
-
   expose(:review)
   expose(:product)
 
@@ -12,7 +12,8 @@ class ReviewsController < ApplicationController
 
     if review.save
       product.reviews << review
-      redirect_to category_product_url(product.category, product), notice: 'Review was successfully created.'
+      redirect_to category_product_url(product.category, product),
+        notice: 'Review was successfully created.'
     else
       render action: 'new'
     end
@@ -20,11 +21,13 @@ class ReviewsController < ApplicationController
 
   def destroy
     review.destroy
-    redirect_to category_product_url(product.category, product), notice: 'Review was successfully destroyed.'
+    redirect_to category_product_url(product.category, product),
+      notice: 'Review was successfully destroyed.'
   end
 
   private
-    def review_params
-      params.require(:review).permit(:content, :rating)
-    end
+
+  def review_params
+    params.require(:review).permit(:content, :rating)
+  end
 end

@@ -1,3 +1,4 @@
+# Products handler
 class ProductsController < ApplicationController
   before_action :login_auth, only: [:create, :update]
 
@@ -19,7 +20,7 @@ class ProductsController < ApplicationController
   def edit
     if product.user != current_user
       redirect_to category_product_url(category, product)
-      flash[:error] = "You are not allowed to edit this product."
+      flash[:error] = 'You are not allowed to edit this product.'
     end
   end
 
@@ -29,7 +30,8 @@ class ProductsController < ApplicationController
 
     if product.save
       category.products << product
-      redirect_to category_product_url(category, product), notice: 'Product was successfully created.'
+      redirect_to category_product_url(category, product),
+        notice: 'Product was successfully created.'
     else
       render action: 'new'
     end
@@ -38,13 +40,14 @@ class ProductsController < ApplicationController
   def update
     if product.user == current_user
       if self.product.update(product_params)
-        redirect_to category_product_url(category, product), notice: 'Product was successfully updated.'
+        redirect_to category_product_url(category, product),
+          notice: 'Product was successfully updated.'
       else
         render action: 'edit'
       end
     else
       redirect_to category_product_url(category, product)
-      flash[:error] = "You are not allowed to edit this product."
+      flash[:error] = 'You are not allowed to edit this product.'
     end
   end
 

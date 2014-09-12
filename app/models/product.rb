@@ -1,5 +1,4 @@
 class Product < ActiveRecord::Base
-
   VALID_PRICE_REGEX = /\A\d+(?:\.\d{0,2})?\z/
 
   validates :title, presence: true

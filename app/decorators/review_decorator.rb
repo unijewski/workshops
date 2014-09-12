@@ -5,5 +5,4 @@ class ReviewDecorator < Draper::Decorator
     review.user_id = user.id
     user.firstname + ' ' + user.lastname
   end
-
 end

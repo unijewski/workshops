@@ -1,3 +1,4 @@
+# Application handler
 class ApplicationController < ActionController::Base
   before_action :devise_names_configuration
 
@@ -10,8 +11,6 @@ class ApplicationController < ActionController::Base
   protected
 
   def devise_names_configuration
-    if devise_controller?
-      devise_parameter_sanitizer.for(:sign_up) << :firstname << :lastname
-    end
+    devise_parameter_sanitizer.for(:sign_up) << :firstname << :lastname if devise_controller?
   end
 end
